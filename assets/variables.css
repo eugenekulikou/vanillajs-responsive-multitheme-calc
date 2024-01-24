@@ -1,0 +1,99 @@
+:root {
+  /* Typography variables */
+  --text-3xs: 0.625rem;  
+  --text-2xs: 0.688rem;
+  --text-xs: 0.75rem;
+  --text-base: 1rem;
+  --text-sm: 1.125rem
+  --text-md: 1.5rem;
+  --text-lg: 1.675rem;
+  --text-xl: 2rem;
+  --font-family-base: "Spartan";
+
+  /* Breakpoints variables */
+  --screen-sm: 375px;
+  --screen-lg: 1440px;
+
+  --border-radius-base: 1rem; 
+  --border-radius-md: 1.25rem;
+  --button-box-shadow: inset 0px -4px 0px 0px;
+
+  --text-link: hsl(228, 45%, 44%);
+  
+  /* Default theme  Backgrounds */
+  --bg-primary: hsl(0, 0%, 90%);
+  --bg-secondary: hsl(0, 5%, 81%);
+  --bg-screen: hsl(0, 0%, 93%);
+
+  /* Default theme  Keys */
+  --primary-key-background: hsl(25, 98%, 40%);
+  --primary-key-shadow: hsl(25, 99%, 27%);
+  --secondary-key-background: hsl(185, 42%, 37%);
+  --secondary-key-shadow: hsl(185, 58%, 25%);
+  --base-key-background: hsl(45, 7%, 89%);
+  --base-key-shadow: hsl(35, 11%, 61%);
+
+  /* Default theme Text */
+  --text-primary: hsl(60, 10%, 19%);
+  --text-secondary: hsl(60, 10%, 19%);
+  --white: hsl(0, 0%, 100%);
+
+  .theme-light {
+    /* Backgrounds */
+    --bg-primary: hsl(0, 0%, 90%);
+    --bg-secondary: hsl(0, 5%, 81%);
+    --bg-screen: hsl(0, 0%, 93%);
+
+    /* Keys */
+    --primary-key-background: hsl(25, 98%, 40%);
+    --primary-key-shadow: hsl(25, 99%, 27%);
+    --secondary-key-background: hsl(185, 42%, 37%);
+    --secondary-key-shadow: hsl(185, 58%, 25%);
+    --base-key-background: hsl(45, 7%, 89%);
+    --base-key-shadow: hsl(35, 11%, 61%);
+
+    /* Text */
+    --text-primary: hsl(60, 10%, 19%);
+    --text-secondary: hsl(60, 10%, 19%);
+    --white: hsl(0, 0%, 100%);
+  }
+
+  .theme-dark {
+    /* Backgrounds */
+    --bg-primary: hsl(222, 26%, 31%);
+    --bg-secondary: hsl(223, 31%, 20%);
+    --bg-screen: hsl(224, 36%, 15%);
+
+    /* Keys */
+    --base-key-background: hsl(225, 21%, 49%);
+    --base-key-shadow: hsl(224, 28%, 35%);
+    --primary-key-background: hsl(6, 63%, 50%);
+    --primary-key-shadow: hsl(6, 70%, 34%);
+    --secondary-key-background: hsl(30, 25%, 89%);
+    --secondary-key-shadow: hsl(28, 16%, 65%);
+
+    /* Text */
+    --text-primary: hsl(221, 14%, 31%);
+    --text-secondary: hsl(221, 14%, 31%);
+    --white: hsl(0, 0%, 100%);
+  }
+
+  .theme-violet {
+    --bg-primary: hsl(268, 75%, 9%);
+    --bg-secondary: hsl(268, 71%, 12%);
+    --bg-screen: hsl(268, 71%, 12%);
+
+    /* Keys */
+    --base-key-background: hsl(281, 89%, 26%);
+    --base-key-shadow: hsl(285, 91%, 52%);
+    --primary-key-background: hsl(176, 100%, 44%);
+    --primary-key-shadow: hsl(177, 92%, 70%);
+    --secondary-key-background: hsl(268, 47%, 21%);
+    --secondary-key-shadow: hsl(290, 70%, 36%);
+
+    /* Text */
+    --text-primary: hsl(52, 100%, 62%);
+    --text-secondary: hsl(198, 20%, 13%);
+    --white: hsl(0, 0%, 100%);
+  }
+}
