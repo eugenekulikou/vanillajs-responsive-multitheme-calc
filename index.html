@@ -1,26 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Calculator app</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
+    <title>Frontend Mentor | Calculator app</title>
 
-
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <h1 class="logo">calc</hq>
+        <h2>theme</h2>
+        <div class="theme-toggle-input">
+          <label for="theme-ligth"></label>
+          <input checked type="radio" id="theme-ligth" name="theme">
+          <label for="theme-darf"></label>
+          <input checked type="radio" id="theme-dark" name="theme">
+          <label for="theme-purple"></label>
+          <input checked type="radio" id="theme-purple" name="theme">
+          <span class="slider"></span>
+        </div>
+      </header>
+      <main>
+        <div id="display" class="display-wrapper">
+          <span>0</span>
+        </div>
+        <div id="keypad" class="keypad-wrapper">
+          <button role="button" data-id="7">7</button>
+          <button role="button" data-id="8">8</button>
+          <button role="button" data-id="9">9</button>
+          <button role="button" data-id="del">del</button>
+          <button role="button" data-id="4">4</button>
+          <button role="button" data-id="5">5</button>
+          <button role="button" data-id="6">6</button>
+          <button role="button" data-id="+">+</button>
+          <button role="button" data-id="1">1</button>
+          <button role="button" data-id="2">2</button>
+          <button role="button" data-id="3">3</button>
+          <button role="button" data-id="-">-</button>
+          <button role="button" data-id=".">.</button>
+          <button role="button" data-id="0">0</button>
+          <button role="button" data-id="/">/</button>
+          <button role="button" data-id="*">*</button>
+          <button role="button" data-id="reset">reset</button>
+          <button role="button" data-id="=">=</button>
+        </div>
+      </main>
+      <footer>
+        <div class="attribution">
+          Challenge by
+          <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+            >Frontend Mentor</a
+          >. Coded by <a href="#">Your Name Here</a>.
+        </div>
+      </footer>
+    </div>
+  </body>
 </html>
