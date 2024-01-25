@@ -1,12 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap");
+
+/* Global imports */
 @import url("./reset.css");
 @import url("./variables.css");
 
-@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap");
+/* Components imports */
+@import url("./theme-toggle-input.css");
 
 body {
   margin: auto;
   background-color: var(--bg-primary);
-  color: var(--text-primary);
   font-size: var(--text-base);
   font-family: var(--font-family-base), sans-serif;
   font-weight: 700;
@@ -22,6 +25,7 @@ header,
 main,
 footer {
   margin: 0.75rem;
+  padding: 0rem 1rem;
 }
 
 header {
@@ -29,6 +33,7 @@ header {
   flex-direction: row;
   align-items: baseline;
   justify-content: space-between;
+  color: var(--text-color-header);
 }
 header > h1 {
   font-size: var(--text-lg);
@@ -40,60 +45,16 @@ header > h2 {
   text-align: end;
 }
 
-.theme-toggle {
-  position: relative;
-  background-color: var(--bg-secondary);
-  border-radius: var(--border-radius-md);
-  /* user-select: none; */
-}
-
-.theme-toggle label {
-  position: absolute;
-  top: -1rem;
-  font-size: var(--text-3xs);
-  cursor: pointer;
-}
-
-.theme-toggle input {
-  opacity: 0;
-  margin: 0.25rem;
-  cursor: pointer;
-}
-
-/* fixme */
-.theme-toggle:nth-child(n) {
-  left: calc(5 + 5 * (n - 1)) px;
-}
-
-.theme-toggle-handler:before {
-  position: absolute;
-  content: "";
-  height: 1rem;
-  width: 1rem;
-  left: 0.25rem;
-  bottom: 0.25rem;
-  border-radius: 50%;
-  background-color: var(--primary-key-background);
-  transition: 0.4s;
-}
-
-#theme-dark:checked ~ .theme-toggle-handler:before {
-  left: 30px;
-}
-
-#theme-violet:checked + .theme-toggle-handler:before {
-  left: 55px;
-}
-
 .display {
   background-color: var(--bg-screen);
-  display: inline-block;
   border-radius: var(--border-radius-md);
-  text-align: end;
+  color: var(--text-color-display);
+  display: inline-block;
   font-size: var(--text-xl);
-  width: 100%;
   margin: 1rem 0rem;
   padding: 1.375rem;
+  text-align: end;
+  width: 100%;
 }
 
 .keypad-wrapper {
@@ -102,11 +63,7 @@ header > h2 {
   grid-gap: 1rem;
   background-color: var(--bg-secondary);
   border-radius: var(--border-radius-md);
-  padding: 1.5rem;
-
-  @media (min-width: 380px) {
-    padding: 1.5rem 2rem;
-  }
+  padding: 1.5rem 1rem;
 }
 
 .keypad-wrapper button {
@@ -114,7 +71,7 @@ header > h2 {
   height: 3.75rem;
   cursor: pointer;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: var(--border-radius-md);
 }
 
 .keypad-wrapper button:nth-last-child(-1n + 2) {
@@ -124,21 +81,21 @@ header > h2 {
 .keypad-wrapper button:not(.btn-primary, .btn-secondary) {
   background-color: var(--base-key-background);
   box-shadow: var(--button-box-shadow) var(--base-key-shadow);
-  color: var(--text-main);
+  color: var(--base-key-text);
   font-size: var(--text-lg);
 }
 
 .btn-primary {
   background-color: var(--primary-key-background);
   box-shadow: var(--button-box-shadow) var(--primary-key-shadow);
-  color: var(--white);
+  color: var(--primary-key-text);
   font-size: var(--text-base);
 }
 
 .btn-secondary {
   background-color: var(--secondary-key-background);
   box-shadow: var(--button-box-shadow) var(--secondary-key-shadow);
-  color: var(--white);
+  color: var(--secondary-key-text);
   font-size: var(--text-base);
   text-transform: uppercase;
 }
@@ -148,11 +105,9 @@ header > h2 {
   transform: translateY(0.375rem);
 }
 
-.keypad-wrapper button:hover {
-}
-
 .attribution {
   font-size: var(--text-2xs);
+  color: var(--text-primary);
   text-align: center;
 }
 .attribution a {
