@@ -8,12 +8,15 @@
   --text-md: 1.5rem;
   --text-lg: 1.675rem;
   --text-xl: 2rem;
+  --text-2xl: 3rem;
   --font-family-base: "Spartan";
 
   /* Breakpoints variables */
   --screen-sm: 375px;
+  --screen-md: 596px;
   --screen-lg: 1440px;
 
+  --border-radius-sm: .5rem;
   --border-radius-md: .675rem;
   --border-radius-lg: 1rem;
   --button-box-shadow: inset 0rem -.25rem 0rem 0rem;
