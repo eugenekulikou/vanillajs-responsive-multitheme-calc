@@ -35,10 +35,6 @@
   width: 3.25rem;
 }
 
-.theme-toggle-label-container label {
-  cursor: pointer;
-}
-
 .slider:before {
   position: absolute;
   content: "";

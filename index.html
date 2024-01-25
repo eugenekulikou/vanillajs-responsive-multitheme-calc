@@ -41,9 +41,7 @@
         </div>
       </header>
       <main>
-        <div id="display" class="display">
-          <span>399,981</span>
-        </div>
+        <div id="display" class="display">399,981</div>
         <div id="keypad" class="keypad-wrapper">
           <button role="button" data-id="7">7</button>
           <button role="button" data-id="8">8</button>
@@ -79,16 +77,6 @@
       </footer>
     </div>
 
-    <script>
-      const bodyEl = document.body;
-      const themeToggle = document.querySelector(".theme-toggle");
-
-      themeToggle.addEventListener("click", (e) => {
-        if (e.target.tagName !== "INPUT") return;
-
-        bodyEl.className = "";
-        bodyEl.classList.add(e.target.id);
-      });
-    </script>
+    <script src="main.js" />
   </body>
 </html>
