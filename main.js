@@ -1,131 +1,149 @@
+const OPERATIONS = ["+", "-", "*", "/", "del", "reset", "="];
+const MAX_OPERATED_NUMBER = 999_999_999_999;
+
 const bodyElement = document.body;
-const displayEl = document.querySelector(".display > span");
 const themeToggle = document.querySelector(".theme-toggle");
 
-const operations = ["+", "-", "*", "/", "del", "reset", "="];
+const display = document.getElementById("display");
+const keypad = document.getElementById("keypad");
 
-themeToggle.addEventListener("click", (e) => {
-  if (e.target.tagName !== "INPUT") return;
+themeToggle.addEventListener("click", (event) => handleThemeToggle(event));
+keypad.addEventListener("click", (event) => handleKeypadInput(event));
 
-  bodyElement.className = "";
-  bodyElement.classList.add(e.target.id);
-});
+let currentInput = 0;
+let currentOperator = null;
+let previousValue = null;
 
-document.addEventListener("DOMContentLoaded", function () {
-  const display = document.getElementById("display");
-  const keypad = document.getElementById("keypad");
+const updateDisplay = () => {
+  display.innerText = formatNumberWithCommas(currentInput);
+};
 
-  let currentInput = "0";
-  let currentOperator = null;
-  let previousValue = null;
+const isOperator = (value) => {
+  return OPERATIONS.includes(value);
+};
 
-  const updateDisplay = () => {
-    display.innerText = currentInput;
-  };
+// Function to perform the final calculation
+function calculate() {
+  if (!currentOperator || !previousValue) {
+    reset();
 
-  const isOperator = (value) => {
-    return operations.includes(value);
-  };
+    return;
+  }
+
+  try {
+    const result = eval(
+      `${Number(previousValue)} ${currentOperator} ${Number(currentInput)}`
+    );
+
+    if (result > MAX_OPERATED_NUMBER) {
+      throw new Error(
+        `Result exceeds the limit (${MAX_OPERATED_NUMBER}). Please enter smaller numbers.`
+      );
+    }
+
+    currentInput = result.toFixed(5);
+  } catch (error) {
+    console.error("Error in calculation:", error);
+  }
+
+  previousValue = null;
+  currentOperator = null;
 
   updateDisplay();
+}
 
-  /**
-   * Event listener for keypad buttons
-   * Implements Event Delegation
-   * https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#event_delegation
-   */
+function reset() {
+  currentInput = 0;
+  currentOperator = null;
+  previousValue = null;
 
-  keypad.addEventListener("click", (event) => {
-    if (event.target.tagName !== "BUTTON") {
+  updateDisplay();
+}
+
+function deleteLastCharacter() {
+  if (currentInput == 0) {
+    return;
+  } else if (currentInput.length == 1) {
+    currentInput = 0;
+  } else {
+    currentInput = currentInput.slice(0, -1);
+  }
+
+  updateDisplay();
+}
+
+function formatNumberWithCommas(input) {
+  let inputStr = String(input);
+
+  let parts = inputStr.split(".");
+  let integerPart = parts[0];
+
+  // Remove decimal part if it is eq to 0
+  let decimalPart =
+    parts.length > 1 && parseInt(parts[1]) !== 0 ? "." + parts[1] : "";
+  let formattedInteger = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+  return formattedInteger + decimalPart;
+}
+
+function emulateButtonClick(key) {
+  const targetButton = document.querySelector(`[data-id='${key}']`);
+
+  targetButton.dispatchEvent(new MouseEvent("click"));
+  debugger;
+}
+
+/**
+ * Event listener for keypad buttons
+ * Implements Event Delegation
+ * https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#event_delegation
+ */
+
+function handleKeypadInput(event) {
+  if (event.target.tagName !== "BUTTON") {
+    return;
+  }
+
+  const button = event.target;
+  const buttonValue = button.getAttribute("data-id");
+
+  if (isOperator(buttonValue)) {
+    if (buttonValue === "=") {
+      calculate();
+      return;
+    } else if (buttonValue === "reset") {
+      reset();
+      return;
+    } else if (buttonValue === "del") {
+      deleteLastCharacter();
       return;
     }
 
-    const button = event.target;
-    const buttonValue = button.getAttribute("data-id");
-
-    if (isOperator(buttonValue)) {
-      if (buttonValue === "=") {
-        calculate();
-        return;
-      } else if (buttonValue === "reset") {
-        reset();
-        return;
-      } else if (buttonValue === "del") {
-        deleteLastCharacter();
-        return;
-      }
-
-      currentOperator = buttonValue;
-      previousValue = currentInput;
-      currentInput = "0";
-
-      updateDisplay();
-    }
-
-    if (!isOperator(buttonValue)) {
-      if (currentInput === "0") {
-        // If the current input is 0 or there is a previous value, replace it
-        currentInput = buttonValue;
-      } else {
-        currentInput += buttonValue;
-      }
-
-      // Check if the current input already has a dot
-      const hasDot = currentInput.includes(".");
-
-      console.log(hasDot);
-      if (buttonValue === "." && hasDot) {
-        // If the button value is a dot and there's already a dot, do nothing
-        return;
-      }
-
-      // Update the display
-      updateDisplay();
-    }
-  });
-
-  // Function to perform the final calculation
-  const calculate = () => {
-    if (!currentOperator || !previousValue) {
-      console.log("currentOperator or previousValue is missing");
-
-      reset();
-
-      return;
-    }
-
-    try {
-      currentInput = eval(
-        `${Number(previousValue)} ${currentOperator} ${Number(currentInput)}`
-      );
-    } catch (error) {
-      console.error("Error in calculation:", error);
-      reset();
-    }
-
-    previousValue = null;
-    currentOperator = null;
+    currentOperator = buttonValue;
+    previousValue = currentInput;
+    currentInput = 0;
 
     updateDisplay();
-  };
+  }
 
-  const reset = () => {
-    currentInput = "0";
-    currentOperator = null;
-    previousValue = null;
-
-    updateDisplay();
-  };
-
-  const deleteLastCharacter = () => {
-    if (currentInput == 0) {
-      return;
-    } else if (currentInput.length == 1) {
-      currentInput = 0;
+  if (!isOperator(buttonValue)) {
+    if (currentInput === 0) {
+      // If the current input is 0 or there is a previous value, replace it
+      currentInput = buttonValue;
+    } else if (currentInput.length < 12) {
+      currentInput += buttonValue;
     } else {
-      currentInput = currentInput.slice(0, -1);
+      return;
     }
 
-    updateDisplay();
-  };
-});
+    // Check if the current input already has a dot
+    if (parseFloat(currentInput)) updateDisplay();
+  }
+}
+
+function handleThemeToggle(event) {
+  if (event.target.tagName !== "INPUT") return;
+
+  bodyElement.className = "";
+  bodyElement.classList.add(event.target.id);
+}

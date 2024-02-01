@@ -1,9 +1,10 @@
+/* replace this staff with :has() https://twitter.com/jh3yy/status/1750370338041647245 */
+
 .theme-toggle {
   position: relative;
   background-color: var(--bg-secondary);
   border-radius: var(--border-radius-lg);
   transition: transform 0.4s;
-  /* user-select: none; */
 }
 
 .theme-toggle::before {
