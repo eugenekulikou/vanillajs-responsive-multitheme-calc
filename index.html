@@ -18,12 +18,14 @@
 
     <!-- A portion of render blocking script to prevent theme flickering -->
     <script>
+      var THEME_OWNER = document.documentElement;
+      var THEME_STORAGE_KEY = "theme";
+
       (() => {
-        const cachedTheme = localStorage.getItem("theme");
-        const themeOwner = document.documentElement;
+        const cachedTheme = localStorage.getItem(THEME_STORAGE_KEY);
 
         if (cachedTheme) {
-          themeOwner.dataset["theme"] = cachedTheme;
+          THEME_OWNER.dataset[THEME_STORAGE_KEY] = cachedTheme;
         }
       })();
     </script>
@@ -71,5 +73,6 @@
     </div>
 
     <script type="text/javascript" src="./main.js"></script>
+    <script type="text/javascript" src="./theme-toggle.js"></script>
   </body>
 </html>

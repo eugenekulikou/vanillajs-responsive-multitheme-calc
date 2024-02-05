@@ -1,7 +1,7 @@
 /* replace this staff with :has() https://twitter.com/jh3yy/status/1750370338041647245 */
 :root {
   --slider-width: 2.725rem;
-  --slider-position-step: calc(var(--slider-width) / 2.5);
+  --slider-position-step: calc(var(--slider-width) / 2.625);
 }
 
 .theme-toggle {
