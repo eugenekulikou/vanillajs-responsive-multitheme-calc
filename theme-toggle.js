@@ -9,10 +9,11 @@
   var THEME_STORAGE_KEY = "theme";
 
   const cachedTheme = localStorage.getItem(THEME_STORAGE_KEY);
-
   if (cachedTheme) {
     THEME_OWNER.dataset[THEME_STORAGE_KEY] = cachedTheme;
   }
+
+  let darkThemeSystemPreference;
 
   document.addEventListener("DOMContentLoaded", () => {
     const header = document.getElementsByTagName("header")[0];
@@ -22,13 +23,45 @@
 
     header.appendChild(themeToggle);
 
-    themeToggle.addEventListener("click", (event) => {
-      if (event.target.tagName !== "INPUT") return;
+    if (!cachedTheme) {
+      darkThemeSystemPreference = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      );
+      darkThemeSystemPreference.addEventListener?.(
+        "change",
+        handleSystemDarkThemePreferenceChange
+      );
 
-      const theme = event.target.id;
-      if (theme) setTheme(theme);
-    });
+      handleSystemDarkThemePreferenceChange(darkThemeSystemPreference);
+    }
+
+    themeToggle.addEventListener("click", handleThemeToggle);
   });
+
+  function handleSystemDarkThemePreferenceChange({
+    matches: isDarkThemePreferred,
+  }) {
+    const theme =
+      cachedTheme === THEMES.DARK || !!darkThemeSystemPreference?.matches
+        ? THEMES.DARK
+        : THEMES.LIGHT;
+
+    THEME_OWNER.dataset[THEME_STORAGE_KEY] = theme;
+  }
+
+  function handleThemeToggle(event) {
+    if (event.target.tagName !== "INPUT") return;
+
+    const theme = event.target.id;
+    if (theme) setTheme(theme);
+
+    if (darkThemeSystemPreference !== undefined) {
+      darkThemeSystemPreference?.removeEventListener?.(
+        "change",
+        handleSystemDarkThemePreferenceChange
+      );
+    }
+  }
 
   function setTheme(themeId) {
     THEME_OWNER.dataset[THEME_STORAGE_KEY] = themeId;
