@@ -1,4 +1,8 @@
 /* replace this staff with :has() https://twitter.com/jh3yy/status/1750370338041647245 */
+:root {
+  --slider-width: 2.725rem;
+  --slider-position-step: calc(var(--slider-width) / 2.5);
+}
 
 .theme-toggle {
   position: relative;
@@ -9,10 +13,10 @@
 
 .theme-toggle::before {
   position: absolute;
-  content: 'theme';
+  content: "theme";
   text-transform: uppercase;
   left: -2.925rem;
-  top: .325rem;
+  top: 0.325rem;
   font-size: var(--text-3xs);
 }
 
@@ -27,13 +31,11 @@
   top: -1rem;
   font-size: var(--text-3xs);
   left: 0.5rem;
-}
 
-.theme-toggle-label-container > span {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 3.25rem;
+  width: var(--slider-width);
 }
 
 .slider:before {
@@ -48,22 +50,20 @@
   transition: 0.4s;
 }
 
-#theme-dark:checked ~ .slider:before {
+html[data-theme="dark"] .slider:before {
   -webkit-transform: translateX(0rem);
   -ms-transform: translateX(0rem);
   transform: translateX(0rem);
 }
 
-#theme-light:checked ~ .slider:before {
-  --slider-position-offset: 1.375rem;
-  -webkit-transform: translateX(var(--slider-position-offset));
-  -ms-transform: translateX(var(--slider-position-offset));
-  transform: translateX(var(--slider-position-offset));
+html[data-theme="light"] .slider:before {
+  -webkit-transform: translateX(var(--slider-position-step));
+  -ms-transform: translateX(var(--slider-position-step));
+  transform: translateX(var(--slider-position-step));
 }
 
-#theme-violet:checked ~ .slider:before {
-  --slider-position-offset: 1.375rem;
-  -webkit-transform: translateX(calc(var(--slider-position-offset) * 2));
-  -ms-transform: translateX(calc(var(--slider-position-offset) * 2));
-  transform: translateX(calc(var(--slider-position-offset) * 2));
+html[data-theme="violet"] .slider:before {
+  -webkit-transform: translateX(calc(var(--slider-position-step) * 2));
+  -ms-transform: translateX(calc(var(--slider-position-step) * 2));
+  transform: translateX(calc(var(--slider-position-step) * 2));
 }

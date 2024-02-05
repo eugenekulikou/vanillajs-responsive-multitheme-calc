@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- displays site properly based on user's device -->
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap"
@@ -14,31 +13,25 @@
       sizes="32x32"
       href="./assets/images/favicon-32x32.png"
     />
-
-    <title>Frontend Mentor | Calculator app</title>
-
-    <!-- Feel free to remove these styles or customize in your own stylesheet 👍 -->
     <link rel="stylesheet" href="./assets/main.css" />
+    <title>Frontend Mentor | Calculator app by Eugene Kulikou</title>
+
+    <!-- A portion of render blocking script to prevent theme flickering -->
+    <script>
+      (() => {
+        const cachedTheme = localStorage.getItem("theme");
+        const themeOwner = document.documentElement;
+
+        if (cachedTheme) {
+          themeOwner.dataset["theme"] = cachedTheme;
+        }
+      })();
+    </script>
   </head>
-  <body class="theme-dark">
+  <body>
     <div id="app" class="app-wrapper">
       <header>
         <h1>calc</h1>
-        <div class="theme-toggle">
-          <input type="radio" id="theme-dark" name="theme" checked />
-          <input type="radio" id="theme-light" name="theme" />
-          <input type="radio" id="theme-violet" name="theme" />
-
-          <div class="theme-toggle-label-container">
-            <span>
-              <label for="theme" id="theme-dark" name="theme">1</label>
-              <label for="theme" id="theme-light" name="theme">2 </label>
-              <label for="theme" id="theme-violet" name="theme">3 </label>
-            </span>
-          </div>
-
-          <span class="slider"></span>
-        </div>
       </header>
       <main>
         <div id="display" class="display">0</div>
