@@ -17,18 +17,7 @@
     <title>Frontend Mentor | Calculator app by Eugene Kulikou</title>
 
     <!-- A portion of render blocking script to prevent theme flickering -->
-    <script>
-      var THEME_OWNER = document.documentElement;
-      var THEME_STORAGE_KEY = "theme";
-
-      (() => {
-        const cachedTheme = localStorage.getItem(THEME_STORAGE_KEY);
-
-        if (cachedTheme) {
-          THEME_OWNER.dataset[THEME_STORAGE_KEY] = cachedTheme;
-        }
-      })();
-    </script>
+    <script type="text/javascript" src="./theme-toggle.js"></script>
   </head>
   <body>
     <div id="app" class="app-wrapper">
@@ -73,6 +62,5 @@
     </div>
 
     <script type="text/javascript" src="./main.js"></script>
-    <script type="text/javascript" src="./theme-toggle.js"></script>
   </body>
 </html>
