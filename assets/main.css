@@ -124,7 +124,7 @@ header > h2 {
 
 .attribution {
   font-size: var(--text-2xs);
-  color: var(--text-primary);
+  color: var(--text-color-display);
   text-align: center;
 }
 .attribution a {
