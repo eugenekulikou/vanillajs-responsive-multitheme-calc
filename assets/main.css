@@ -15,9 +15,12 @@ body {
   transition: color 0.4s, background-color 0.4s;
 }
 
-#app {
+.app-wrapper {
   width: var(--screen-sm);
-  margin: auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 
   @media (min-width: 1440px) {
     width: var(--screen-md);

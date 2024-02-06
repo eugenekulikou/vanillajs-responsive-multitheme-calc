@@ -90,13 +90,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return formattedInteger + decimalPart;
   }
 
-  function emulateButtonClick(key) {
-    const targetButton = document.querySelector(`[data-id='${key}']`);
-
-    targetButton.dispatchEvent(new MouseEvent("click"));
-    debugger;
-  }
-
   /**
    * Event listener for keypad buttons
    * Implements Event Delegation
