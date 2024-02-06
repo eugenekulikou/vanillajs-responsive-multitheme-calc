@@ -2,10 +2,11 @@
  *  Register a DOMContentLoaded event listener so we run that code after
  *  the browser has finished parsing the document and constructing the DOM
  */
-const OPERATIONS = ["+", "-", "*", "/", "del", "reset", "="];
-const MAX_OPERATED_NUMBER = 999_999_999_999;
 
 document.addEventListener("DOMContentLoaded", () => {
+  const OPERATIONS = ["+", "-", "*", "/", "del", "reset", "="];
+  const MAX_OPERATED_NUMBER = 999_999_999_999;
+
   const display = document.getElementById("display");
   const keypad = document.getElementById("keypad");
 
@@ -17,8 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
   keypad.addEventListener("click", (event) => handleKeypadInput(event));
 
   const updateDisplay = () => {
-    if (display.innerHTML == "0") return;
-
     display.innerText = formatNumberWithCommas(currentInput);
   };
 
