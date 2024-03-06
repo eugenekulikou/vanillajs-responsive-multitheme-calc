@@ -37,7 +37,7 @@ Users should be able to:
 
 ### Links
 
-<!-- - Solution URL: [Add solution URL here](https://your-solution-url.com) -->
+- Solution URL: [github](https://github.com/eugenekulikou/vanillajs-responsive-multitheme-calc)
 - Live Site URL: [vanillajs-responsive-multitheme-calc.vercel.app](https://vanillajs-responsive-multitheme-calc.vercel.app/)
 
 ## My process
@@ -114,5 +114,5 @@ As the project is aimed to give me more practice in features I don't work on in 
 
 ## Author
 
-- Frontend Mentor - [@evk11](https://www.frontendmentor.io/profile/evk11)
+- Frontend Mentor - [@eugenekulikou](https://www.frontendmentor.io/profile/eugenekulikou)
 - LinkedIn - [@eugenekulikou](https://www.linkedin.com/in/eugenekulikou/)
